@@ -36,9 +36,7 @@
 #include <vector>
 
 #include "camera_info_manager/camera_info_manager.hpp"
-#include "image_transport/image_transport.hpp"
 #include "rclcpp/rclcpp.hpp"
-#include "sensor_msgs/msg/image.hpp"
 #include "sensor_msgs/msg/compressed_image.hpp"
 #include "std_srvs/srv/set_bool.hpp"
 
@@ -67,7 +65,6 @@ public:
   void set_v4l2_params();
   void update();
   void publish();
-  bool take_and_send_image();
   bool take_and_send_image_mjpeg();
 
   rcl_interfaces::msg::SetParametersResult parameters_callback(
@@ -80,9 +77,7 @@ public:
 
   UsbCam * m_camera;
 
-  sensor_msgs::msg::Image::UniquePtr m_image_msg;
   sensor_msgs::msg::CompressedImage::UniquePtr m_compressed_img_msg;
-  std::shared_ptr<image_transport::CameraPublisher> m_image_publisher;
   rclcpp::Publisher<sensor_msgs::msg::CompressedImage>::SharedPtr m_compressed_image_publisher;
   rclcpp::Publisher<sensor_msgs::msg::CameraInfo>::SharedPtr m_compressed_cam_info_publisher;
 

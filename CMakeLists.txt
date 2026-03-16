@@ -110,7 +110,8 @@ install(TARGETS
 )
 
 ament_auto_package(
-  INSTALL_TO_SHARE
+ USE_SCOPED_HEADER_INSTALL_DIR 
+   INSTALL_TO_SHARE
     launch
     config
 )
