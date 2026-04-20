@@ -161,6 +161,7 @@ typedef struct image_t
   size_t number_of_pixels;
   size_t bytes_per_line;
   size_t size_in_bytes;
+  size_t bytes_used{0};
   v4l2_format v4l2_fmt;
   struct timespec stamp;
 
@@ -244,6 +245,11 @@ public:
   inline size_t get_image_size_in_bytes()
   {
     return m_image.size_in_bytes;
+  }
+
+  inline size_t get_bytes_used()
+  {
+    return m_image.bytes_used;
   }
 
   inline size_t get_image_size_in_pixels()
